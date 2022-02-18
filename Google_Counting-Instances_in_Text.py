@@ -20,3 +20,15 @@ df3 = df2[len(df2)-1:len(df2)]
 
 # Gather columns into rows
 df3.melt(var_name = 'word', value_name = 'occur')
+#---------------------------------------------------
+# Another method wihtout using melt()
+
+df = google_file_store
+
+n_bull = df['contents'].str.count('bull').sum()
+n_bear = df['contents'].str.count('bear').sum()
+
+df1 = pd.DataFrame()
+
+df1['word'] = ['bull','bear']
+df1['count'] = [n_bull, n_bear]
